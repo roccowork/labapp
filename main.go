@@ -12,9 +12,14 @@ func newMux(version, host string) *http.ServeMux {
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "labapp %s running on %s\n", version, host)
 	})
+	// mux.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
+	// 	fmt.Fprintln(w, "ok")
+	// })
 	mux.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(500)
 		fmt.Fprintln(w, "ok")
 	})
+
 	return mux
 }
 
