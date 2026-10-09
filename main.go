@@ -21,14 +21,9 @@ func newMux(version, host string) *http.ServeMux {
 
 func main() {
 	host, _ := os.Hostname()
-	
-	// fmt.Println("listening on :8000")
-	// http.ListenAndServe(":8000", newMux(os.Getenv("APP_VERSION"), host))
-
-	fmt.Println("listening on :8080")
-	http.ListenAndServe(":8080", newMux(os.Getenv("APP_VERSION"), host))
+	fmt.Println("listening on :8000")
+	http.ListenAndServe(":8000", newMux(os.Getenv("APP_VERSION"), host))
 }
-
 
 
 		
