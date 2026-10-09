@@ -10,7 +10,8 @@ import (
 func newMux(version, host string) *http.ServeMux {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "labapp %s running on %s\n", version, host)
+		// fmt.Fprintf(w, "labapp %s running on %s\n", version, host)
+		fmt.Fprintf(w, "labapp %s running on %s, deployed by Jenkins + Argo CD\n", version, host)
 	})
 	mux.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintln(w, "ok")
@@ -23,3 +24,6 @@ func main() {
 	fmt.Println("listening on :8000")
 	http.ListenAndServe(":8000", newMux(os.Getenv("APP_VERSION"), host))
 }
+
+
+		
